@@ -1,9 +1,13 @@
 from django.contrib import admin
 
-from .models import Tasks
+from .models import Project, Person
 
 # Register your models here.
-class TasksAdmin(admin.ModelAdmin):
+class ProjectAdmin(admin.ModelAdmin):
     fields = ['title', 'status', "progress", "completedate"]
 
-admin.site.register(Tasks, TasksAdmin)
+class PersonAdmin(admin.ModelAdmin):
+    fields = ["name", "surname", "status", "telegram", "mail"]
+
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Person, PersonAdmin)
