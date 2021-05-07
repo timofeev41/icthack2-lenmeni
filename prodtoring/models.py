@@ -1,11 +1,9 @@
 from django.db import models
+from django.contrib import admin
+
 
 class Project(models.Model):
-    TASK_STATUS = (
-        ("OK", "Completed"),
-        ("PR", "In progress"),
-        ("NS", "Not started yet")
-    )
+    TASK_STATUS = (("OK", "Completed"), ("PR", "In progress"), ("NS", "Not started yet"))
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=60)
     status = models.CharField(max_length=2, choices=TASK_STATUS)
@@ -16,13 +14,14 @@ class Project(models.Model):
     def __str__(self) -> str:
         return f"#{self.id}: {self.title}"
 
+
 class Person(models.Model):
     USER_STATUS = (
         ("STUD", "Student"),
         ("TEAC", "Teacher"),
         ("MENT", "Mentor"),
         ("ADMN", "Administration"),
-        ("CUST", "Customer")
+        ("CUST", "Customer"),
     )
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=30)
@@ -31,7 +30,30 @@ class Person(models.Model):
     telegram = models.CharField(max_length=60)
     mail = models.EmailField()
 
-    task = models.CharField(max_length=64)
+    curr_task = models.CharField(max_length=64)
 
     def __str__(self) -> str:
         return f"#{self.id} {self.name} {self.surname} - {self.status}"
+
+class Task(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    # TODO: по id связать с проектом
+    # TODO: вес в процентах
+    # TODO: сортировка по весу/дедлайну
+    weight = models.IntegerField()
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=100)
+
+    deadline = models.DateTimeField(auto_now=True)
+
+    responsible = models.ForeignKey(Person, on_delete=models.PROTECT)
+    
+
+    def __str__(self) -> str:
+        return f"{self.title} - {self.responsible}"
+
+    @admin.display(boolean=True, ordering="project", description="Проект")
+    def task_project(self):
+        return self.project
+
+    
