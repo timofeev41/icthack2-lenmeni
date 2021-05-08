@@ -8,4 +8,5 @@ urlpatterns = [
     path('project=<int:project_id>/', view_project_homepage, name="project page"),
     path('admin/', admin.site.urls),
     path('users/', view_user_list),
+    path('login/', )
 ]

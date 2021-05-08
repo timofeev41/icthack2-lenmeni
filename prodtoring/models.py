@@ -13,6 +13,8 @@ class Project(models.Model):
     description = models.CharField(max_length=100, default="Краткое описание проекта")
     customer = models.CharField(max_length=50, default="ICT InfoLab")
 
+    
+
     def __str__(self) -> str:
         return f"#{self.id}: {self.title}"
 
@@ -33,6 +35,7 @@ class Person(models.Model):
     mail = models.EmailField()
 
     curr_task = models.CharField(max_length=64)
+    project = models.ManyToManyField(Project)
 
     def __str__(self) -> str:
         return f"#{self.id} {self.name} {self.surname} - {self.status}"
@@ -45,11 +48,9 @@ class Task(models.Model):
     weight = models.IntegerField()
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
-
     deadline = models.DateTimeField(auto_now=True)
-
     responsible = models.ForeignKey(Person, on_delete=models.PROTECT)
-    
+        
 
     def __str__(self) -> str:
         return f"{self.title} - {self.responsible}"
