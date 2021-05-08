@@ -10,6 +10,8 @@ class Project(models.Model):
     progress = models.CharField(max_length=3)
     startdate = models.DateTimeField(auto_now=True)
     completedate = models.DateTimeField(max_length=30)
+    description = models.CharField(max_length=100, default="Краткое описание проекта")
+    customer = models.CharField(max_length=50, default="ICT InfoLab")
 
     def __str__(self) -> str:
         return f"#{self.id}: {self.title}"
