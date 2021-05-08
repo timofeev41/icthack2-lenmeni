@@ -8,7 +8,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 class PersonAdmin(admin.ModelAdmin):
-    fields = ["name", "surname", "status", "telegram", "mail"]
+    fields = ["name", "surname", "status", "telegram", "mail", "skills"]
 
 
 class TaskAdmin(admin.ModelAdmin):

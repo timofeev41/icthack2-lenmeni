@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib import admin
 
+from multiselectfield import MultiSelectField
+
 
 class Project(models.Model):
     TASK_STATUS = (("Completed", "Completed"), ("In progress", "In progress"), ("Not started yet", "Not started yet"))
@@ -27,12 +29,26 @@ class Person(models.Model):
         ("ADMN", "Administration"),
         ("CUST", "Customer"),
     )
+    SKILLS = (
+        ("C++", "C++"),
+        ("Python", "Python"),
+        ("Написание документации", "Написание документации"),
+        ("C#", "C#"),
+        ("Java", "Java"),
+        ("Лонг айленд", "Kotlin"),
+        ("Монтаж видео", "Монтаж"),
+        ("JavaScript", "JS"),
+        ("IOS-разработка", "IOS-разработка"),
+        ("UNIX/Linux", "UNIX подобные системы")
+    )
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
     status = models.CharField(max_length=4, choices=USER_STATUS)
     telegram = models.CharField(max_length=60)
     mail = models.EmailField()
+
+    skills = MultiSelectField(choices=SKILLS, max_choices=4, default=None, null=True)
 
     curr_task = models.CharField(max_length=64)
     project = models.ManyToManyField(Project)
