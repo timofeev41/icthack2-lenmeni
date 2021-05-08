@@ -3,10 +3,10 @@ from django.contrib import admin
 
 
 class Project(models.Model):
-    TASK_STATUS = (("OK", "Completed"), ("PR", "In progress"), ("NS", "Not started yet"))
+    TASK_STATUS = (("Completed", "Completed"), ("In progress", "In progress"), ("Not started yet", "Not started yet"))
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=60)
-    status = models.CharField(max_length=2, choices=TASK_STATUS)
+    status = models.CharField(max_length=40, choices=TASK_STATUS)
     progress = models.CharField(max_length=3)
     startdate = models.DateTimeField(auto_now=True)
     completedate = models.DateTimeField(max_length=30)
