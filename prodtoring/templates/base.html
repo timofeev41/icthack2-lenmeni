@@ -6,18 +6,32 @@
   <title>Projectoring - {% block title %}base{% endblock %}</title>
 </head>
 
-<body>
-  <div id="sidebar">
-    {% block sidebar %}
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/blog/">Blog</a></li>
-    </ul>
-    {% endblock %}
-  </div>
+<body class="ui container">
+  <header class="ui grid">
+    <div class="ui divider"></div>
+    <div class="four column row">
+      <div class="left floated column">
+        <h2 class="ui header">
+          <i class="address book alternative icon"></i>
+          <div class="content">
+            <a href="/">Projectoring</a>
+            <div class="sub header">Simple project management</div>
+          </div>
+        </h2>
+      </div>
+      <div class="Right floated left aligned column">
+        <div class="ui icon input">
+          <i class="search icon"></i>
+          <input type="text" placeholder="Поиск проектов">
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+  </header>
 
   <div>
     {% block content %}{% endblock %}
+    <div class="ui hidden divider"></div>
   </div>
 </body>
 </html>

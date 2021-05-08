@@ -18,6 +18,13 @@
         <td>{{ entry.progress }}</td>
         <td>{{ entry.completedate }}</td>
       </tbody>
+      {% empty %}
+      <div class="ui message">
+        <h2 class="ui center aligned icon header">
+          <i class="circular frown outline icon"></i>
+          Увы, сейчас доступных проектов нет :(
+        </h2>
+      </div>
       {% endfor %}
     </table>
   </div>
