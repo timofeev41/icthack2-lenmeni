@@ -56,6 +56,9 @@ class Person(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     sorting = Person.objects.filter(groups__name__in=['_curr_project'])
 
+    def __sorted__(self) -> str:
+        return f"#{self.id} {self.sorting}"
+
     def __str__(self) -> str:
         return f"#{self.id} {self.name} {self.surname} - {self.status}"
 
