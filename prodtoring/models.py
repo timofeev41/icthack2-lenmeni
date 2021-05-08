@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from django.core import validators
 
 from multiselectfield import MultiSelectField
 
@@ -9,7 +10,7 @@ class Project(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=60)
     status = models.CharField(max_length=40, choices=TASK_STATUS)
-    progress = models.CharField(max_length=3)
+    progress = models.IntegerField(max_length=3, validators=[validators.MaxValueValidator(limit_value=100), validators.MinValueValidator(limit_value=0)])
     startdate = models.DateTimeField(auto_now=True)
     completedate = models.DateTimeField(max_length=30)
     description = models.CharField(max_length=100, default="Краткое описание проекта")
