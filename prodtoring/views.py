@@ -29,3 +29,14 @@ def view_user_list(request):
         "users": users
     }
     return HttpResponse(template.render(context, request))
+
+def view_current_user(request, user_id):
+    user = Person.objects.all().filter(id=user_id)
+    skills = str(user[0].skills).split(", ")
+    template = loader.get_template("personal.html")
+    context = {
+        "username": f"{user[0].name} {user[0].surname}",
+        "user": user,
+        "skills": skills,
+    }
+    return HttpResponse(template.render(context, request))
