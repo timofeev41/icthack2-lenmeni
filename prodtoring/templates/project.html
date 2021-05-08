@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+
+{% for entry in project %}
+    <p>{{ entry.title }}</p>
+    <p>Status = {{ entry.status }}</p>
+    <p>Started {{ entry.startdate|date:"F j, Y" }}</p>
+{% endfor %}
+{% endblock %}
