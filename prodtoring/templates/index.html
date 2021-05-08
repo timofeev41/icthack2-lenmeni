@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div>
+    <table class="ui celled table" style="text-align: center">
+      <thead>
+        <th>Проект</th>
+        <th>Статус</th>
+        <th>Прогресс</th>
+        <th>Дедлайн</th>
+      </thead>
+      {% for entry in projects %}
+      <tbody>
+        <td><a href="/project={{ entry.id }}">{{ entry.title }}</a></td>
+        <td>{{ entry.status }}</td>
+        <td>{{ entry.progress }}</td>
+        <td>{{ entry.completedate }}</td>
+      </tbody>
+      {% empty %}
+      <div class="ui message">
+        <h2 class="ui center aligned icon header">
+          <i class="circular frown outline icon"></i>
+          Увы, сейчас доступных проектов нет :(
+        </h2>
+      </div>  
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}
