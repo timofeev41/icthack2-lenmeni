@@ -51,9 +51,9 @@ class Person(models.Model):
     skills = MultiSelectField(choices=SKILLS, max_choices=4, default=None, null=True)
 
     curr_task = models.CharField(max_length=64)
-    project = models.ManyToManyField(Project)
+    #project = models.ManyToManyField(Project)
     _curr_project = models.CharField(max_length=64)
-    id_proj = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     sorting = Person.objects.filter(groups__name__in=['_curr_project'])
 
     def __str__(self) -> str:
