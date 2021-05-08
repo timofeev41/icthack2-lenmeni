@@ -1,12 +1,108 @@
 {% extends "base.html" %}
 
-{% block title %}{{ project.title }}{% endblock %}
+{% block title %}Просмотр проекта{% endblock %}
 
 {% block content %}
 
 {% for entry in project %}
-    <p>{{ entry.title }}</p>
-    <p>Status = {{ entry.status }}</p>
+    <div class="ui equal width center aligned padded grid">
+      <div class="row">
+        <div class="middle aligned column">  
+          <h2 class="ui center aligned header">{{ entry.title }}</h2>
+        </div>
+        <!-- proj status -->
+        <div class="eight wide column">
+        {% if entry.status == "Completed" %}
+        <div class="ui ordered steps">
+          <div class="completed step">
+            <div class="content">
+              <div class="title">To do</div>
+              <div class="description">Планируется</div>
+            </div>
+          </div>
+          <div class="completed step">
+            <div class="content">
+              <div class="title">Working</div>
+              <div class="description">Кипит работа</div>
+            </div>
+          </div>
+          <div class="completed step">
+            <div class="content">
+              <div class="title">Prod</div>
+              <div class="description">Выполнено</div>
+            </div>
+          </div>
+        </div>
+        {% elif entry.status == "In progress" %}
+        <div class="ui ordered steps">
+          <div class="completed step">
+            <div class="content">
+              <div class="title">To do</div>
+              <div class="description">Планируется</div>
+            </div>
+          </div>
+          <div class="completed step">
+            <div class="content">
+              <div class="title">Working</div>
+              <div class="description">Кипит работа</div>
+            </div>
+          </div>
+          <div class="active step">
+            <div class="content">
+              <div class="title">Prod</div>
+              <div class="description">Выполнено</div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="ui ordered steps">
+          <div class="completed step">
+            <div class="content">
+              <div class="title">To do</div>
+              <div class="description">Планируется</div>
+            </div>
+          </div>
+          <div class="active step">
+            <div class="content">
+              <div class="title">Working</div>
+              <div class="description">Кипит работа</div>
+            </div>
+          </div>
+          <div class="active step">
+            <div class="content">
+              <div class="title">Prod</div>
+              <div class="description">Выполнено</div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      </div>
+      <div class="row">
+        <div class="middle aligned column">
+          <p>
+            <i class="huge ambulance icon"></i>
+            <div class="content">
+              {{ entry.description }}
+            </div>
+          </p>
+        </div>
+        <div class="column">
+          <h2 class="ui center aligned icon header">
+            <i class="circular users icon"></i>
+            Заказчик - {{ entry.customer }}
+          </h2>
+        </div>
+      </div>
+      <div class="column"></div>
+      <div class="column">
+        <h2 class="ui center aligned icon header">
+          <i class="circular compass outline icon"></i>
+          Дедлайн - {{ entry.startdate|date:"F j, Y" }}
+        </h2>
+      </div>
+    </div>
     <p>Started {{ entry.startdate|date:"F j, Y" }}</p>
 {% endfor %}
+
 {% endblock %}

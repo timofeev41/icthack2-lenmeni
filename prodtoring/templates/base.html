@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
   <title>Projectoring - {% block title %}base{% endblock %}</title>
@@ -11,15 +12,15 @@
     <div class="ui divider"></div>
     <div class="four column row">
       <div class="left floated column">
-        <h2 class="ui header">
-          <i class="address book alternative icon"></i>
-          <div class="content">
-            <a href="/">Projectoring</a>
-            <div class="sub header">Simple project management</div>
-          </div>
-        </h2>
+        <a class="ui large green image label" href="/">
+          <img src="https://sun9-74.userapi.com/impg/Zs0z_AEUwzHpSeoHqq7l-H4-7aigL6m39qASLA/tVdK_xCJD7E.jpg?size=400x400&quality=96&sign=504fd07ca0a64878b04eb08fb747343e&type=album" style="width: 18%;">
+          PROJECT
+          <div class="detail">ORING</div>
+        </a>
       </div>
-      <div class="Right floated left aligned column">
+      <div class="left floated column"></div>
+      <div class="column"></div>
+      <div class="right floated left aligned column">
         <div class="ui icon input">
           <i class="search icon"></i>
           <input type="text" placeholder="Поиск проектов">
