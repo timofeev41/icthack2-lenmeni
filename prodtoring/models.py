@@ -55,6 +55,9 @@ class Person(models.Model):
     
     curr_task = models.CharField(max_length=64)
     project = models.ManyToManyField(Project)
+    _curr_project = models.CharField(max_length=64)
+    id_proj = models.ForeignKey(Project, on_delete=models.CASCADE)
+    sorting = Person.objects.filter(groups__name__in=['_curr_project'])
 
     pic_url = models.URLField(max_length=256, default="https://semantic-ui.com/images/avatar2/large/kristy.png")
 
