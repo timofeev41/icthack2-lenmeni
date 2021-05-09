@@ -10,13 +10,15 @@ class Project(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=60)
     status = models.CharField(max_length=40, choices=TASK_STATUS)
-    progress = models.IntegerField(max_length=3, validators=[validators.MaxValueValidator(limit_value=100), validators.MinValueValidator(limit_value=0)])
+    progress = models.IntegerField(validators=[validators.MaxValueValidator(limit_value=100), validators.MinValueValidator(limit_value=0)])
     startdate = models.DateTimeField(auto_now=True)
     completedate = models.DateTimeField(max_length=30)
     description = models.CharField(max_length=100, default="Краткое описание проекта")
     customer = models.CharField(max_length=50, default="ICT InfoLab")
-
     
+    boss = models.CharField(max_length=80, default="Тимофеев Н.А.")
+
+    pic_url = models.URLField(max_length=256, default="https://news.itmo.ru/images/news/big/960500.jpg")
 
     def __str__(self) -> str:
         return f"#{self.id}: {self.title}"
@@ -24,11 +26,11 @@ class Project(models.Model):
 
 class Person(models.Model):
     USER_STATUS = (
-        ("STUD", "Student"),
-        ("TEAC", "Teacher"),
-        ("MENT", "Mentor"),
-        ("ADMN", "Administration"),
-        ("CUST", "Customer"),
+        ("Student", "Student"),
+        ("Teacher", "Teacher"),
+        ("Mentor", "Mentor"),
+        ("Administration", "Administration"),
+        ("Customer", "Customer"),
     )
     SKILLS = (
         ("C++", "C++"),
@@ -45,14 +47,16 @@ class Person(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
-    status = models.CharField(max_length=4, choices=USER_STATUS)
+    status = models.CharField(max_length=20, choices=USER_STATUS)
     telegram = models.CharField(max_length=60)
     mail = models.EmailField()
 
     skills = MultiSelectField(choices=SKILLS, max_choices=4, default=None, null=True)
-
+    
     curr_task = models.CharField(max_length=64)
     project = models.ManyToManyField(Project)
+
+    pic_url = models.URLField(max_length=256, default="https://semantic-ui.com/images/avatar2/large/kristy.png")
 
     def __str__(self) -> str:
         return f"#{self.id} {self.name} {self.surname} - {self.status}"
