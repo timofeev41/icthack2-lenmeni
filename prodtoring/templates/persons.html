@@ -8,7 +8,7 @@
   {% for user in users %}
   <div class="card">
     <div class="image">
-      <img src="https://semantic-ui.com/images/avatar2/large/matthew.png">
+      <img src="{{ user.pic_url }}">
     </div>
     <div class="content">
       <div class="header">{{ user.name }} {{ user.surname }}</div>
