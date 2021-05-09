@@ -1,6 +1,5 @@
 
-
-// ~~вот здесь нужно вставить логотип~~ //  # PROJECTORING
+# PROJECTORING [<img src="logotip_project.jpg" width="50"/>](image.png) 
 
 
 
