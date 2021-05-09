@@ -4,11 +4,11 @@ from .models import Project, Person, Task
 
 # Register your models here.
 class ProjectAdmin(admin.ModelAdmin):
-    fields = ["title", "status", "progress", "completedate"]
+    fields = ["title", "status", "progress", "completedate", "description", "pic_url"]
 
 
 class PersonAdmin(admin.ModelAdmin):
-    fields = ["name", "surname", "status", "telegram", "mail", "skills"]
+    fields = ["name", "surname", "status", "telegram", "mail", "skills", "project", "pic_url"]
 
 
 class TaskAdmin(admin.ModelAdmin):
