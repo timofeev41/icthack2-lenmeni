@@ -1,2 +1,4 @@
 django
 django-multiselectfield
+django-registration
+django-jazzmin
