@@ -1,5 +1,5 @@
 
-# PROJECTORING [<img src="logotip_project.jpg" width="50"/>](image.png) 
+# PROJECTORING [<img src="prodtoring/static/favicon.png" width="50"/>](image.png) 
 
 
 
@@ -19,7 +19,7 @@
 .
 ├── logotip_project.jpg
 ├── manage.py
-├── prodtoring
+├── prodtoring  --- Reusable application 
 │   ├── admin.py
 │   ├── apps.py
 │   ├── __init__.py
@@ -38,7 +38,7 @@
 │   │   └── project.html
 │   ├── tests.py
 │   └── views.py
-├── projectoring
+├── projectoring --- Project 
 │   ├── asgi.py
 │   ├── __init__.py
 │   ├── settings.py
@@ -52,7 +52,7 @@
 
 ## :boom: Как получить:question: :
 ```shell script
-git clone https://github.com/timofeev41/icthack2-lenmeni.git  
+git clone https://github.com/timofeev41/icthack2-lenmeni.git && pip install -r icthack2-lenmeni/requirements.txt
 ```
 ### Пользуйтесь нашим сервером, и тогда реальность будет соответствовать вашим ожиданиям :heart_eyes:
 
